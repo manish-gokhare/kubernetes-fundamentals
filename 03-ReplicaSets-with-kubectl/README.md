@@ -81,6 +81,10 @@ kubectl expose rs my-helloworld-rs  --type=NodePort --port=80 --target-port=8080
 kubectl get service
 kubectl get svc
 
+# Get the EndPoint of SVC
+
+kubectl get EndpointSlice my-helloworld-rs-service
+
 # Get Public IP of Worker Nodes
 kubectl get nodes -o wide
 ```
@@ -118,7 +122,7 @@ spec:
 - Update the ReplicaSet
 ```
 # Apply latest changes to ReplicaSet
-kubectl replace -f replicaset-demo.yml
+kubectl apply -f replicaset-demo.yml
 
 # Verify if new pods got created
 kubectl get pods -o wide
